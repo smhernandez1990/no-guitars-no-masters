@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const methodOverride = require('method-override')
 const authRoutes = require('./controllers/auth')
 const userRoutes = require('./controllers/user')
+const path = require('path')
 
 const session = require('express-session')
 const MongoStore = require("connect-mongo")
@@ -16,12 +17,12 @@ const passDataToView = require('./middleware/passDataToView')
 // Middlewares
 require('./db/connection')
 app.use(morgan('tiny'))
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"))
 // Set view engine to ejs
-
 app.set('view engine', 'ejs') // When this is present we dont need .ejs in our res.renders
-
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,

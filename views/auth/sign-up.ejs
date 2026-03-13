@@ -6,15 +6,21 @@
     <title>Sign Up</title>
   </head>
   <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Create a Account</h1>
+    <%- include('../partials/_navbar.ejs', { title: 'Sign Up' }) %>
+    <%- include('../partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!'}) %>
     <% if(typeof(message) !== undefined) { %>
       <p style="color:red;font-style:italic;"><%=  message %></p>
     <% } %>
     <form action="/auth/sign-up" method="POST">
+      <fieldset>
+        <legend>One Of Us! One Of Us!</legend>
       <div>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required placeholder="ken@streetfighter.com"/>
+        <input type="text" id="username" name="username" required placeholder="basicallyjohncage123"/>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="soundartist@example.cmm">
       </div>
       <div>
         <label for="password">Password:</label>
@@ -24,7 +30,8 @@
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password"/>
       </div>
-      <button type="submit">Sign up</button>
+      <button type="submit">Sign Up</button>
+      </fieldset>
     </form>
   </body>
 </html>

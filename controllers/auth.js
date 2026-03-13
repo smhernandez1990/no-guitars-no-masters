@@ -9,7 +9,7 @@ router.get('/sign-up', (req, res) => {
 
 router.post('/sign-up', async (req, res) => {
     try {
-        const { username, password, confirmPassword } = req.body
+        const { username, email, password, confirmPassword } = req.body
 
         // Usernames need to be unique: two people can’t share the same username!
         const foundUser = await User.findOne({ username: username })
@@ -29,10 +29,11 @@ router.post('/sign-up', async (req, res) => {
         const hashedPassword = bcrypt.hashSync(password, 8);
         const user = await User.create({
             username,
+            email,
             hashedPassword
         })
 
-        res.status(200).json(user)
+        res.render('auth/sign-in', { message: 'Account Successfully Created! Please Sign In!' })
     } catch (error) {
         res.render('auth/sign-up', { message: error.message })
     }
