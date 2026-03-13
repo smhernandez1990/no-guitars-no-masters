@@ -8,10 +8,10 @@
 <body>
     <%- include('partials/_navbar.ejs', { title: 'No Guitars No Masters' }) %>
     <%- include('partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!' }) %>
+    <div class="indexImg">
+        <!-- <img src="" alt="Enthusiastic experimentalist annoying someone within earshot" /> -->
+    </div>
     <% if(user) { %>
-        <div class="indexImg">
-            <!-- <img src="" alt="Enthusiastic experimentalist annoying someone within earshot" /> -->
-        </div>
         <div class="indexBlurbLoggedIn">
             <p>Welcome back <%= user.username %>! Have you been punishing your neighbors lately? Looking for some inspiring new ways to make your pets wish they had earplugs? You're in the right place!</p>
         </div>

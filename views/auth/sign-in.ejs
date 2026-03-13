@@ -9,13 +9,15 @@
 
 <body>
   <%- include('../partials/_navbar.ejs', { title: 'Sign In' }) %>
-    <h1>Sign In</h1>
+  <%- include('../partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!' }) %>
     <% if(typeof(message) !==undefined) { %>
       <p style="color:red;font-style:italic;">
         <%= message %>
       </p>
       <% } %>
         <form action="/auth/sign-in" method="POST">
+          <fieldset>
+            <legend><em>They Always Come Back</em></legend>
           <div>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required placeholder="ken@streetfighter.com" />
@@ -24,7 +26,8 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required placeholder="Enter a password" />
           </div>
-          <button type="submit">Sign In</button>
+          <button type="submit" id="authButton">Sign In</button>
+          </fieldset>
         </form>
 </body>
 
