@@ -1,4 +1,4 @@
-const authRequired = (req, res, next) => {
+const isSignedIn = (req, res, next) => {
   if (req.session.user) {
     next(); // allow the user to the authorized route
   } else {
@@ -6,4 +6,4 @@ const authRequired = (req, res, next) => {
   }
 };
 
-module.exports = authRequired
+module.exports = isSignedIn

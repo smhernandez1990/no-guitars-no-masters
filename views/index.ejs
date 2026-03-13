@@ -6,12 +6,26 @@
     <title>Welcome Page</title>
 </head>
 <body>
-    <%- include('partials/_navbar.ejs') %>
+    <%- include('partials/_navbar.ejs', { title: 'No Guitars No Masters' }) %>
+    <%- include('partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!' }) %>
     <% if(user) { %>
-        <h1>Welcome back <%= user.username %></h1>
+        <div class="indexImg">
+            <!-- <img src="" alt="Enthusiastic experimentalist annoying someone within earshot" /> -->
+        </div>
+        <div class="indexBlurbLoggedIn">
+            <p>Welcome back <%= user.username %>! Have you been punishing your neighbors lately? Looking for some inspiring new ways to make your pets wish they had earplugs? You're in the right place!</p>
+        </div>
+        <div class="indexNavBtns">
+            <button>Add Gear</button> <button>Your Gear</button> <button>Gear Index</button>
+        </div>
      <% } else { %>
-        <h1>Welcome to the App</h1>
-        <p>Please <a href="/auth/sign-up">Sign Up</a> or <a href="/auth/sign-in">Sign In</a> </p>
+        <div class="indexBlurbNoUser">
+            <p>Do you long for a world where pedal demos and reviews weren't all done by guitar-collecting dads? Tired of seeing the same hardware techno eurorack explanations? Look no further! Here at NO GUITARS NO MASTERS other people have seemingly beat you to the punch and you can read all about their experimentations so you don't have to do it yourself!
+            <br />
+            <br />
+            If you think you're a big brain experimentalist thinking outside the stompbox (see what I did there?) and someone might want to know how to make the same unlistenable sounds without thinking too hard you can create an account and show the world how you have singlehandedly reinvented the experimental music wheel!
+            </p>
+        </div>
     <% } %>
     
 </body>

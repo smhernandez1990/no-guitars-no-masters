@@ -10,7 +10,7 @@ const userRoutes = require('./controllers/user')
 
 const session = require('express-session')
 const MongoStore = require("connect-mongo")
-const authRequired = require('./middleware/authRequired')
+const isSignedIn = require('./middleware/isSignedIn')
 const passDataToView = require('./middleware/passDataToView')
 
 // Middlewares
@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes)
 
 // Any routes defined under this middleware require auth
-app.use(authRequired)
+app.use(isSignedIn)
 app.use('/users', userRoutes)
 
 app.listen(PORT, () => console.log(`The port is running on: ${PORT}`))
