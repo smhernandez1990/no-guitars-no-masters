@@ -18,14 +18,14 @@ const gearSchema = new mongoose.Schema({
         enum: ['pedal', 'modular', 'pro audio', 'cassette player/4 track', 'diy', 'other'],
         required: true
     },
-    effect: [ String ],
+    effects: [ String ],
     description: {
         type: String,
         required: true
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User._id'
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

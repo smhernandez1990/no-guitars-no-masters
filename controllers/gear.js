@@ -10,7 +10,11 @@ router.get('/', async (req, res) => {
     } catch (error) {
         res.status(500).json({ errMessage: error.message })   
     }
-    
+})
+
+//NEW - GET - users/:userId/gear/new
+router.get('/new', (req, res) => {
+    res.render('gear/new.ejs')
 })
 
 module.exports = router
