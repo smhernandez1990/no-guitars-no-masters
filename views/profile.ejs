@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
 <body>
-    <%- include('partials/_navbar.ejs') %>
-    <h1>Username: <em><%= user.username %></em></h1>
-    <p><strong>Member Since:</strong> <%= new Date(user.createdAt) %></p>
+    <%- include('partials/_navbar.ejs', { title: `${user.username}'s Account` }) %>
+    <%- include('partials/_pageHeader.ejs', { subheader: `${user.username}'s Account` }) %>
+    <div>
+        <% if(user.uploadedGear.length === 0) { %>
+            <h3 class="profileH3">You Don't Have Any Gear</h3>
+        <% } else { %>
+            <h3 class="profileH3">Your Gear</h3>
+            <ul class="gearIndexItm">
+                <% user.uploadedGear.forEach(({name, _id}) => { %>
+                    <a href="/users/<%= user._id %>/uploadedGear/<%= _id %>">
+                        <li><%= `${name}` %></li>
+                    </a>
+                <% }) %>
+            </ul>
+        <% } %>
+    </div>
+    <div>
+        <p><strong>Member Since:</strong> <%= new Date(user.createdAt) %></p>
+    </div>
 </body>
 </html>

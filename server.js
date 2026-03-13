@@ -7,6 +7,7 @@ const morgan = require('morgan')
 const methodOverride = require('method-override')
 const authRoutes = require('./controllers/auth')
 const userRoutes = require('./controllers/user')
+const appRoutes = require('./controllers/app')
 const path = require('path')
 
 const session = require('express-session')
@@ -49,5 +50,7 @@ app.use('/auth', authRoutes)
 // Any routes defined under this middleware require auth
 app.use(isSignedIn)
 app.use('/users', userRoutes)
+app.use('users/:userId/gear', appRoutes)
+
 
 app.listen(PORT, () => console.log(`The port is running on: ${PORT}`))

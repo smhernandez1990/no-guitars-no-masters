@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema({
     hashedPassword: {
         type: String,
         required: true
-    }
+    },
+    uploadedGear: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Gear'
+}]
 }, {
     timestamps: true
 })

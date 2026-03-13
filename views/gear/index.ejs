@@ -1,0 +1,16 @@
+<%- include('../partials/_navbar.ejs', { title: 'Gear Index' }) %>
+<body>
+    <%- include('../partials/_pageHeader.ejs', { subheader: 'INCORRECTLY USED GEAR'}) %>
+    <% if(gear.length === 0) { %>
+        <h3>No Gear Currently Uploaded</h3>
+    <% } else { %>
+        <ul class="gearIndexH3">
+            <% gear.forEach(({name, _id}) => { %>
+                <a href="/gear/<%= _id %>">
+                    <li><%= `${name}` %></li>
+                </a>
+            <% }) %>
+        </ul>
+    <% } %>
+</body>
+</html>
