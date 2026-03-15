@@ -5,7 +5,7 @@ const gearSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    imgId: {
+    img: {
         type: String,
         required: true
     },
@@ -24,12 +24,12 @@ const gearSchema = new mongoose.Schema({
         required: true
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User._id'
+        type: String,
+        required: true
     },
     createdBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User.username'
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

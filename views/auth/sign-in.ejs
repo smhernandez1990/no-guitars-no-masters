@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In</title>
-</head>
-
 <body>
   <%- include('../partials/_navbar.ejs', { title: 'Sign In' }) %>
   <%- include('../partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!' }) %>
@@ -15,20 +6,21 @@
         <%= message %>
       </p>
       <% } %>
-        <form action="/auth/sign-in" method="POST">
-          <fieldset>
-            <legend><em>They Always Come Back</em></legend>
-          <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required placeholder="ken@streetfighter.com" />
-          </div>
-          <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required placeholder="Enter a password" />
-          </div>
+    <form action="/auth/sign-in" method="POST">
+      <fieldset>
+        <legend><em>They Always Come Back</em></legend>
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required placeholder="victimofanoisewall456" />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required placeholder="Enter a password" />
+        </div>
+        <div>
           <button type="submit" id="authButton">Sign In</button>
-          </fieldset>
-        </form>
+        </div>
+      </fieldset>
+    </form>
 </body>
-
 </html>

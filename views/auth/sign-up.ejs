@@ -1,37 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <%- include('../partials/_navbar.ejs', { title: 'Sign Up' }) %>
-    <%- include('../partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!'}) %>
-    <% if(typeof(message) !== undefined) { %>
-      <p style="color:red;font-style:italic;"><%=  message %></p>
-    <% } %>
-    <form action="/auth/sign-up" method="POST">
-      <fieldset>
-        <legend><em>One Of Us! One Of Us!</em></legend>
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required placeholder="basicallyjohncage123"/>
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required placeholder="soundartist@example.cmm">
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required placeholder="Enter a password"/>
-      </div>
-      <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password"/>
-      </div>
-      <button type="submit" id="authButton">Sign Up</button>
-      </fieldset>
-    </form>
-  </body>
+<body>
+  <%- include('../partials/_navbar.ejs', { title: 'Sign Up' }) %>
+  <%- include('../partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!'}) %>
+  <% if(typeof(message) !== undefined) { %>
+    <p style="color:red;font-style:italic;"><%=  message %></p>
+  <% } %>
+  <form action="/auth/sign-up" method="POST">
+    <fieldset>
+      <legend><em>One Of Us! One Of Us!</em></legend>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required placeholder="basicallyjohncage123"/>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="soundartist@example.cmm">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required placeholder="Enter a password"/>
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password"/>
+    </div>
+    <button type="submit" id="authButton">Sign Up</button>
+    </fieldset>
+  </form>
+</body>
 </html>
