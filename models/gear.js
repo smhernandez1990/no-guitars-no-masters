@@ -18,7 +18,7 @@ const gearSchema = new mongoose.Schema({
         enum: ['pedal', 'modular', 'pro audio', 'cassette player/4 track', 'diy', 'other'],
         required: true
     },
-    effects: [ String ],
+    effects: [{ type: String }],
     description: {
         type: String,
         required: true

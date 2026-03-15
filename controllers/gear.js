@@ -23,7 +23,8 @@ router.get('/new', (req, res) => {
 //CREATE - POST - /gear
 router.post('/', upload.single('img'), async (req, res) => {
     try {
-        const { name, company, format, effect, description } = req.body
+        const { name, company, format, effects, description } = req.body
+        const user = await User.findById(req.session.user._id)
         const userId = await User.findById(req.session.user._id)
         const createdBy = await User.findById(req.session.user._id)
         const result = await cloudinary.uploader.upload(req.file.path, (err, result) => {
@@ -34,16 +35,19 @@ router.post('/', upload.single('img'), async (req, res) => {
             }
         })
         const img = await result.secure_url
-        await Gear.create({
+        //const effect = await checkedEffect
+        const newGear = await Gear.create({
             name,
             img,
             company,
             format,
-            effect,
+            effects,
             description,
             userId,
             createdBy
         })
+        user.uploadedGear.push(newGear)
+        await user.save()
         res.status(200).json({success: true})
     } catch (error) {
         res.status(500).json({ errMessage: error.message })
