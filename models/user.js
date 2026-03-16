@@ -17,8 +17,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     uploadedGear: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Gear'
+        type: String,
+        required: false
 }]
 }, {
     timestamps: true

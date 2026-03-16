@@ -46,9 +46,29 @@ router.post('/', upload.single('img'), async (req, res) => {
             userId,
             createdBy
         })
-        user.uploadedGear.push(newGear)
-        await user.save()
         res.status(200).json({success: true})
+    } catch (error) {
+        res.status(500).json({ errMessage: error.message })
+    }
+})
+
+//EDIT - GET - /gear/:gearId
+router.get('/:gearId/edit', async (req, res) => {
+    try {
+        const user = await User.findById(req.session.user._id)
+        const gear = await Gear.findById(req.params.gearId)
+        res.render('gear/edit.ejs', { gear, user })
+    } catch (error) {
+        res.status(500).json({ errMessage: error.message })
+    }
+})
+
+//SHOW - GET - /gear/:gearId
+router.get('/:gearId', async (req, res) => {
+    try {
+        const user = await User.findById(req.session.user._id)
+        const gear = await Gear.findById(req.params.gearId)
+        res.render('gear/show.ejs', { gear, user })
     } catch (error) {
         res.status(500).json({ errMessage: error.message })
     }

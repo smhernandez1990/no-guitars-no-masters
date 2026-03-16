@@ -1,0 +1,82 @@
+<%- include('../partials/_navbar.ejs', { title: 'Edit Gear' }) %>
+
+    <body>
+        <%- include('../partials/_pageHeader', { subheader: 'ADD GEAR YOU HAVE USED INCORRECTLY' }) %>
+            <form action="/gear/<%= gear._id %>?_method=PUT" method="PUT" enctype="multipart/form-data">
+                <fieldset>
+                    <legend><em>Wrong Uses Only</em></legend>
+                    <div>
+                        <label for="img">Image:</label>
+                        <input type="file" name="img" id="img" accept="image/*" value="<%= gear.img %>" required />
+                    </div>
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" required placeholder="ODB-3" value="<%= gear.name %>" />
+                    </div>
+                    <div>
+                        <label for="compant">Company:</label>
+                        <input type="text" name="company" id="company" required placeholder="BOSS" value="<%= gear.company %>" />
+                    </div>
+                    <div>
+                        <label for="format">Format:</label>
+                        <select name="format" id="format" required value="<%= gear.format %>">
+                            <% ['pedal', 'modular' , 'pro audio' , 'cassette player/4 track' , 'diy' , 'other'
+                                ].forEach(format=> { %>
+                                <option value="<%= format %>">
+                                    <%= format.charAt(0).toUpperCase() + format.split('').slice(1).join('') %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="effects">Effects:</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="distortion" value="distortion" />
+                        <label for="distortion">Distortion</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="reverb" value="reverb" />
+                        <label for="reverb">Reverb</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="filter" value="filter" />
+                        <label for="filter">Filter</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="delay" value="delay" />
+                        <label for="delay">Delay</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="ringMod" value="ringMod" />
+                        <label for="ringMod">Ring Mod</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="pitchShifter" value="pitchShifter" />
+                        <label for="pitchShifter">Pitch Shifter</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="oscillator" value="oscillator" />
+                        <label for="oscillator">Oscillator</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="resonator" value="resonator" />
+                        <label for="resonator">Resonator</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="functionGenerator" value="functionGenerator" />
+                        <label for="functionGenerator">Function Generator</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="noInput" value="noInput" />
+                        <label for="noInput">No Input</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="noiseGen" value="noiseGen" />
+                        <label for="noiseGen">Noise Generator</label>
+                        <br />
+                        <input type="checkbox" name="effects[]" id="other" value="other" />
+                        <label for="other">Other</label>
+                        <br />
+                    </div>
+                    <div>
+                        <label for="description">Description:</label>
+                        <textarea name="description" id="description"><%= gear.description %></textarea>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+    </body>
+
+    </html>
