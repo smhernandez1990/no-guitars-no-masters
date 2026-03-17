@@ -1,6 +1,6 @@
 <%- include('../partials/_navbar.ejs', { title: 'Edit Gear' }) %>
 <body>
-    <%- include('../partials/_pageHeader', { subheader: 'EDIT GEAR YOU HAVE USED INCORRECTLY'}) %>
+    <%- include('../partials/_pageHeader', { subheader: 'Edit Gear You Have Used Incorrectly'}) %>
     <form action="/gear/<%= gear._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend><em>Wrong Uses Only</em></legend>

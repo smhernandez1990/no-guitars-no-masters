@@ -7,7 +7,11 @@
         <% } else { %>
             <h3 class="profileH3">Your Gear</h3>
             <ul class="gearIndexItm">
-              
+              <% userGear.forEach(g => { %>
+                    <a href="/gear/<%= g._id %>">
+                        <li><%= g.name %></li>
+                    </a>
+              <% }) %>
             </ul>
         <% } %>
     </div>

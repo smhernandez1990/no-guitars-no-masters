@@ -10,7 +10,8 @@ router.get('/me', isSignedIn, async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id);
         const gear = await Gear.find()
-        res.render('profile', { user, gear })
+        const userGear = await gear.filter(g => g.createdBy === user.username)
+        res.render('profile', { user, gear, userGear })
     } catch (error) {
         res.status(500).json({ errMessage: error.message })
     }

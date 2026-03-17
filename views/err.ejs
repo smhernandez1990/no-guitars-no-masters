@@ -1,0 +1,8 @@
+<%- include('partials/_navbar.ejs', { title: '404 Error' }) %>
+<body>
+    <%- include('partials/_pageHeader.ejs', { subheader: '404 ERROR'}) %>
+    <h3>Ya Lost?</h3>
+    <p><strong><em><%= errMessage %></em></strong></p>
+    <button onclick="window.history.back()">Go Back</button>
+</body>
+</html>
