@@ -2,7 +2,6 @@
 <body>
     <%- include('../partials/_pageHeader.ejs', { subheader: `${gear.name}` }) %>
     <div>
-        <% if(user._id === gear.userId) { %>
         <img src="<%= gear.img %>" alt="Photo of <%= gear.name %>" />
     </div>
     <div>
@@ -27,33 +26,11 @@
         Submitted By: <%= gear.createdBy %>
     </div>
     <div>
-        <a href="/gear/<%= gear._id %>/edit"><button>Edit</button></a> <form action="/gear/<%= gear._id %>?_method=DELETE" method="POST"><button type="submit">Delete</button></form>
+        <button onclick="window.history.back()">Go Back</button>
+        <% if (user.username === gear.createdBy) { %>
+        <a href="/gear/<%= gear._id %>/edit"><button>Edit</button></a> 
+        <form action="/gear/<%= gear._id %>?_method=DELETE" method="POST"><button type="submit">Delete</button></form>
+        <% } %>
     </div>
-    <% } else { %>
-        <div>
-        <img src="<%= gear.img %>" alt="Photo of <%= gear.name %>" />
-    </div>
-    <div>
-        Manufactured By: <%= gear.company %>
-    </div>
-    <div>
-        Type: <%= gear.format %>
-    </div>
-    <div>
-        Effect:
-        <ul style="list-style-type: none;">
-            <% const effects = [gear.effects] %>
-            <% effects.forEach(fx => { %>
-                <li><%= fx %></li>
-            <% }) %>
-        </ul>
-    </div>
-    <div>
-        Description: <%= gear.description %>
-    </div>
-    <div>
-        Submitted By: <%= gear.createdBy %>
-    </div>
-    <% } %>
 </body>
 </html>

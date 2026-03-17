@@ -40,7 +40,7 @@ router.delete('/:gearId', async (req, res) => {
 //UPDATE - PUT - /gear/:gearId
 router.put('/:gearId', upload.single('img'), async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id) //{ $pull: { uploadedGear: req.params.gearId } })
+        const user = await User.findById(req.session.user._id)
         const gear = await Gear.findById(req.params.gearId)
         if (user.username === gear.createdBy) {
             const { name, company, format, effects, description } = req.body
@@ -120,8 +120,8 @@ router.get('/:gearId/edit', async (req, res) => {
 //SHOW - GET - /gear/:gearId
 router.get('/:gearId', async (req, res) => {
     try {
-        const gear = await Gear.findById(req.params.gearId)
-        res.render('gear/show.ejs', { gear })
+       const gear = await Gear.findById(req.params.gearId)
+       res.render('gear/show.ejs', { gear })
     } catch (error) {
         res.render('err.ejs', { errMessage: error.message }) 
     }

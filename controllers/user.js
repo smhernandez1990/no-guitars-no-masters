@@ -13,7 +13,7 @@ router.get('/me', isSignedIn, async (req, res) => {
         const userGear = await gear.filter(g => g.createdBy === user.username)
         res.render('profile', { user, gear, userGear })
     } catch (error) {
-        res.status(500).json({ errMessage: error.message })
+        res.render('err.ejs', { errMessage: error.message })
     }
 });
 
