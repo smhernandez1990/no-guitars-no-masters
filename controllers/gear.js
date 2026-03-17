@@ -9,7 +9,7 @@ const upload = require('../middleware/multer')
 router.get('/', async (req, res) => {
     try {
        const gear = await Gear.find()
-       res.render('gear/index.ejs', { gear: gear })
+       res.render('gear/index.ejs', { gear })
     } catch (error) {
         res.status(500).json({ errMessage: error.message })   
     }
@@ -20,13 +20,26 @@ router.get('/new', (req, res) => {
     res.render('gear/new.ejs')
 })
 
+//DELETE - DELETE - /gear/:gearId
+router.delete('/:gearId', async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.session.user._id, {
+            $pull: { uploadedGear: req.params.gearId } 
+        })
+        const gear = await Gear.findByIdAndDelete(req.params.gearId)
+        res.redirect('/gear')
+    } catch (error) {
+        res.status(500).json({ errMessage: error.message })
+    }
+})
+
 //CREATE - POST - /gear
 router.post('/', upload.single('img'), async (req, res) => {
     try {
         const { name, company, format, effects, description } = req.body
         const user = await User.findById(req.session.user._id)
-        const userId = await User.findById(req.session.user._id)
-        const createdBy = await User.findById(req.session.user._id)
+        const userId = await user._id
+        const createdBy = await user.username
         const result = await cloudinary.uploader.upload(req.file.path, (err, result) => {
             if (err) {
                 res.json({ errMessage: error.message })
@@ -46,7 +59,9 @@ router.post('/', upload.single('img'), async (req, res) => {
             userId,
             createdBy
         })
-        res.status(200).json({success: true})
+        user.uploadedGear.push(newGear._id)
+        await user.save()
+        res.redirect('/gear')
     } catch (error) {
         res.status(500).json({ errMessage: error.message })
     }

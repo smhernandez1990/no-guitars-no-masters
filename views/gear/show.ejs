@@ -23,7 +23,10 @@
         Description: <%= gear.description %>
     </div>
     <div>
-        <button>Edit</button> <button>Delete</button>
+        Submitted By: <%= gear.createdBy %>
+    </div>
+    <div>
+        <a href="/gear/<%= gear._id %>/edit"><button>Edit</button></a> <form action="/gear/<%= gear._id %>?_method=DELETE" method="POST"><button type="submit">Delete</button></form>
     </div>
 </body>
 </html>
