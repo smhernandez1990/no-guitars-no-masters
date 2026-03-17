@@ -107,7 +107,7 @@ router.get('/:gearId/edit', async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id) //{ $pull: { uploadedGear: req.params.gearId } })
         const gear = await Gear.findById(req.params.gearId)
-        if (user.username === gear.createdBy) {
+        if (user === gear.createdBy) {
             res.render('gear/edit.ejs', { gear })
         } else {
             throw new Error('You must be signed in to add, edit or delete gear')

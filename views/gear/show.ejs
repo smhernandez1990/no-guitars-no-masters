@@ -1,7 +1,7 @@
 <%- include('../partials/_navbar.ejs', { title: gear.name }) %>
 <body>
     <%- include('../partials/_pageHeader.ejs', { subheader: `${gear.name}` }) %>
-    <div>
+    <div id="home-img">
         <img src="<%= gear.img %>" alt="Photo of <%= gear.name %>" />
     </div>
     <div>
@@ -27,7 +27,7 @@
     </div>
     <div>
         <button onclick="window.history.back()">Go Back</button>
-        <% if (user.username === gear.createdBy) { %>
+        <% if (user !== null && user.username === gear.createdBy) { %>
         <a href="/gear/<%= gear._id %>/edit"><button>Edit</button></a> 
         <form action="/gear/<%= gear._id %>?_method=DELETE" method="POST"><button type="submit">Delete</button></form>
         <% } %>

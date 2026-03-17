@@ -4,11 +4,6 @@
     <form action="/gear/<%= gear._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend><em>Wrong Uses Only</em></legend>
-            <!-- <div>
-                <label for="img">Image:</label>
-                <input type="file" name="img" id="img" accept="image/*" />
-                <em>Current File: <%= gear.img %></em>
-            </div> -->
             <div>
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" required value="<%= gear.name %>" />
