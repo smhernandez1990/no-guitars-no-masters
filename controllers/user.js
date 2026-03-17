@@ -9,7 +9,7 @@ const isSignedIn = require("../middleware/isSignedIn");
 router.get('/me', isSignedIn, async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id);
-        const gear = await Gear.find({ userId: user }).populate('userId')
+        const gear = await Gear.find()
         res.render('profile', { user, gear })
     } catch (error) {
         res.status(500).json({ errMessage: error.message })

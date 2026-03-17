@@ -1,5 +1,5 @@
+<%- include('../partials/_navbar.ejs', { title: gear.name }) %>
 <body>
-    <%- include('../partials/_navbar.ejs', { title: gear.name }) %>
     <%- include('../partials/_pageHeader.ejs', { subheader: `${gear.name}` }) %>
     <div>
         <img src="<%= gear.img %>" alt="Photo of <%= gear.name %>" />

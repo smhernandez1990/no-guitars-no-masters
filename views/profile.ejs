@@ -1,5 +1,5 @@
+<%- include('partials/_navbar.ejs', { title: `${user.username}'s Account` }) %>
 <body>
-    <%- include('partials/_navbar.ejs', { title: `${user.username}'s Account` }) %>
     <%- include('partials/_pageHeader.ejs', { subheader: `${user.username}'s Account` }) %>
     <div>
         <% if(user.uploadedGear.length === 0) { %>

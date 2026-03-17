@@ -28,43 +28,12 @@
             </div>
             <div>
                 <label for="effects">Effects:</label>
+                <br />
+                <% ['Distortion', 'Reverb', 'Filter', 'Delay', 'Ring-Mod', 'Octave', 'Oscillator', 'Resonator', 'Function', 'No-Input', 'Other'].forEach(effect => { %>
+                <input type="checkbox" name="effects" id="effects" value="<%= effect %>" />
+                    <%= effect %>
                     <br />
-                    <input type="checkbox" name="effects[]" id="distortion" value="distortion" />
-                    <label for="distortion">Distortion</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="reverb" value="reverb">
-                    <label for="reverb">Reverb</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="filter" value="filter" />
-                    <label for="filter">Filter</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="delay" value="delay" />
-                    <label for="delay">Delay</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="ringMod" value="ringMod" />
-                    <label for="ringMod">Ring Mod</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="pitchShifter" value="pitchShifter" />
-                    <label for="pitchShifter">Pitch Shifter</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="oscillator" value="oscillator" />
-                    <label for="oscillator">Oscillator</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="resonator" value="resonator" />
-                    <label for="resonator">Resonator</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="functionGenerator" value="functionGenerator" />
-                    <label for="functionGenerator">Function Generator</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="noInput" value="noInput" />
-                    <label for="noInput">No Input</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="noiseGen" value="noiseGen" />
-                    <label for="noiseGen">Noise Generator</label>
-                    <br />
-                    <input type="checkbox" name="effects[]" id="other" value="other" />
-                    <label for="other">Other</label>
-                    <br />
+                <% }) %>
             </div>
             <div>
                 <label for="description">Description:</label>

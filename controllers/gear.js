@@ -9,7 +9,7 @@ const upload = require('../middleware/multer')
 router.get('/', async (req, res) => {
     try {
        const gear = await Gear.find()
-       res.render('gear/index.ejs', { gear })
+       res.render('gear/index.ejs', { gear: gear })
     } catch (error) {
         res.status(500).json({ errMessage: error.message })   
     }
@@ -23,11 +23,43 @@ router.get('/new', (req, res) => {
 //DELETE - DELETE - /gear/:gearId
 router.delete('/:gearId', async (req, res) => {
     try {
-        const user = await User.findByIdAndUpdate(req.session.user._id, {
+        await User.findByIdAndUpdate(req.session.user._id, {
             $pull: { uploadedGear: req.params.gearId } 
         })
-        const gear = await Gear.findByIdAndDelete(req.params.gearId)
+        await Gear.findByIdAndDelete(req.params.gearId)
         res.redirect('/gear')
+    } catch (error) {
+        res.status(500).json({ errMessage: error.message })
+    }
+})
+
+//UPDATE - PUT - /gear/:gearId
+router.put('/:gearId', upload.single('img'), async (req, res) => {
+    try {
+        const { name, company, format, effects, description } = req.body
+        const user = await User.findById(req.session.user._id)
+        const userId = await user._id
+        const createdBy = await user.username
+        // const result = await cloudinary.uploader.upload(req.file.path, (err, result) => {
+        //     if (err) {
+        //         res.json({ errMessage: error.message })
+        //     } if (result) {
+        //         console.log('img uploaded');
+        //     }
+        // })
+        //const img = await result.secure_url
+        //const effect = await checkedEffect
+        const updateGear = await Gear.findByIdAndUpdate(req.params.gearId, {
+            name,
+            //img,
+            company,
+            format,
+            effects,
+            description,
+            userId,
+            createdBy
+        }, {new: true})
+        res.redirect(`/gear/${req.params.gearId}`)
     } catch (error) {
         res.status(500).json({ errMessage: error.message })
     }
@@ -70,9 +102,9 @@ router.post('/', upload.single('img'), async (req, res) => {
 //EDIT - GET - /gear/:gearId
 router.get('/:gearId/edit', async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id)
+        //const user = await User.findById(req.session.user._id)
         const gear = await Gear.findById(req.params.gearId)
-        res.render('gear/edit.ejs', { gear, user })
+        res.render('gear/edit.ejs', { gear })
     } catch (error) {
         res.status(500).json({ errMessage: error.message })
     }
@@ -81,9 +113,8 @@ router.get('/:gearId/edit', async (req, res) => {
 //SHOW - GET - /gear/:gearId
 router.get('/:gearId', async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id)
         const gear = await Gear.findById(req.params.gearId)
-        res.render('gear/show.ejs', { gear, user })
+        res.render('gear/show.ejs', { gear })
     } catch (error) {
         res.status(500).json({ errMessage: error.message })
     }
