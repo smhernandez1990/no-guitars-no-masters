@@ -1,6 +1,6 @@
 # NO GUITARS NO MASTERS
 
-![screenshot of app](https://imgur.com/LaYr0vV)
+![screenshot of app](https://res.cloudinary.com/dmjtm9ms7/image/upload/v1773799354/Screenshot_2026-03-17_at_8.45.54_pm_facuv0.png)
 
 NO GUITARS NO MASTERS is an app where you can upload all of the music gear you have bought to make "experimental music" and explain how you use them to make sounds that only a handful of the world population really appreciate. You can `create an account` and `sign in` to add, edit and delete submissions.
 
@@ -16,7 +16,7 @@ __Link__: [Balsamiq Wireframing](https://trello.com/c/qXBRY9Ni/19-https-dbdiagra
 
 ## Assets
 
-All images on this app (so far) were taken and edited by me. They are located in both my [cloudinary](https://console.cloudinary.com/app/c-89fdf3eb8712d910aeb06050d9ea4a/assets/media_library/search?q=&view_mode=mosaic) and [imgur account]('https://imgur.com/user/smhernandez1990/posts')
+All images on this app (so far) were taken and edited by me. They are located in my [cloudinary](https://console.cloudinary.com/app/c-89fdf3eb8712d910aeb06050d9ea4a/assets/media_library/search?q=&view_mode=mosaic)
 
 ## Tech Used
 
@@ -28,6 +28,10 @@ All images on this app (so far) were taken and edited by me. They are located in
 `Iphone Photos Editor`
 `Node.js`
 `CLoudinary`
+
+## Attributions
+
+Did lots of research on `Stack Overflow` and well as the `Cloudinary Set Up Video Guide`. `Geeks4Geeks` and `MDN` were also frequented for help with understanding different tricks and ways around issues I was running into.
 
 ## Planned Updates
 
