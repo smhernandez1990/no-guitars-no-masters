@@ -5,8 +5,8 @@
         <% if(user.uploadedGear.length === 0) { %>
             <h3 class="profileH3">You Don't Have Any Gear</h3>
         <% } else { %>
+            <ul id="gearIndexItm">
             <h3 class="profileH3">Your Gear</h3>
-            <ul class="gearIndexItm">
               <% userGear.forEach(g => { %>
                     <a href="/gear/<%= g._id %>">
                         <li><%= g.name %></li>

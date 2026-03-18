@@ -1,18 +1,18 @@
 <%- include('../partials/_navbar.ejs', { title: gear.name }) %>
 <body>
     <%- include('../partials/_pageHeader.ejs', { subheader: `${gear.name}` }) %>
-    <div id="home-img">
-        <img src="<%= gear.img %>" alt="Photo of <%= gear.name %>" />
+    <div>
+        <img src="<%= gear.img %>" alt="Photo of <%= gear.name %>" id="show-img" />
     </div>
     <div>
-        Manufactured By: <%= gear.company %>
+        <strong>Manufactured By:</strong> <%= gear.company %>
     </div>
     <div>
-        Type: <%= gear.format %>
+        <strong>Type:</strong> <%= gear.format %>
     </div>
     <div>
-        Effect:
-        <ul style="list-style-type: none;">
+        <strong>Effect:</strong>
+        <ul id="show-fx">
             <% const effects = [gear.effects] %>
             <% effects.forEach(fx => { %>
                 <li><%= fx %></li>
@@ -20,10 +20,10 @@
         </ul>
     </div>
     <div>
-        Description: <%= gear.description %>
+        <strong>Description:</strong> <%= gear.description %>
     </div>
     <div>
-        Submitted By: <%= gear.createdBy %>
+        <strong>Submitted By:</strong> <%= gear.createdBy %>
     </div>
     <div>
         <button onclick="window.history.back()">Go Back</button>

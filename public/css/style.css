@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+nav {
+    display: flex;
+    align-self: center;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 20px;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 1em;
+}
+
+nav a:hover {
+    font-style: italic;
+    margin: 0 1em;
+    cursor: crosshair;
+}
+
+nav a:visited {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 1em;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vh;
+    background: linear-gradient(#C5ADC5, #B2B5E0);
+    font-family: 'Quicksand';
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    display: inline;
+    position: fixed;
+    top: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+h2 {
+    display: inline;
+    position: fixed;
+    top: 80px;
+    text-align: center;
+    width: 100%;
+}
+
+h1, h2 {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.indexImg {
+    max-width: 42%;
+    max-height: auto;
+    border: solid rgb(85, 85, 85);
+    border-radius: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+p {
+    padding: 7px 75px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#show-img {
+    max-height: auto;
+    max-width: 40%;
+    border: solid rgb(85, 85, 85);
+    border-radius: 100px;
+    margin: auto;
+    display: block;
+}
+
+button {
+    background-color: antiquewhite;
+    border: solid rgb(110, 110, 110);
+    border-radius: 25px;
+    font-weight: bold;
+    color: rgb(85, 85, 85);
+}
+
+button:hover {
+    background-color: rgb(110, 110, 110);
+    border: solid antiquewhite;
+    border-radius: 25px;
+    font-weight: bold;
+    color: antiquewhite;
+    cursor: crosshair;
+}
+
+fieldset {
+    border: 2px dotted rgb(110, 110, 110);
+    font-weight: 550;
+    margin: 140px 0 0 0;
+}
+
+fieldset label,
+fieldset input {
+    margin: 25px;
+    justify-content: space-between;
+}
+
+fieldset input {
+    padding: 6px;
+    border: rgb(110, 110, 110);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+#new-fs label,
+#edit-fs label,
+#new-fs input,
+#edit-fs input {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px 10px;
+    margin: auto;
+}
+
+#new-fs textarea,
+#edit-fs textarea {
+    height: 100px;
+    width: 250px;
+    resize: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#show-fx {
+    display: inline;
+    padding: 0;
+}
+
+#show-fx li {
+    display: inline;
+}
+
+#show-fx li::after {
+    content: ', ';
+    display: inline;
+}
+
+#show-fx li:last-child::after {
+    content: '';
+}
+
+#gearIndexItm {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+#gearIndexItm a {
+    text-decoration: none;
+    cursor: crosshair;
+}
+
+#gearIndexItm li {
+    color: white;
+    font-weight: bold;
+    list-style: none;
+}
+
+#gearIndexItm li:hover {
+    font-style: italic;
+    margin: 0 1em;
+    cursor: crosshair;
+}
+
+#gearIndexItm:visited {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 1em;
+}
+
+.gearIndexH3 {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.gearIndexH3 a {
+    text-decoration: none;
+    cursor: crosshair;
+}
+
+.gearIndexH3 li {
+    color: white;
+    font-weight: bold;
+    list-style: none;
+}
+
+.gearIndexH3 li:hover {
+    font-style: italic;
+    margin: 0 1em;
+    cursor: crosshair;
+}
+
+.gearIndexH3:visited {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 1em;
+}

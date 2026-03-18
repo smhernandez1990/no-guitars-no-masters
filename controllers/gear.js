@@ -25,11 +25,11 @@ router.delete('/:gearId', async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id) //{ $pull: { uploadedGear: req.params.gearId } })
         const gear = await Gear.findById(req.params.gearId)
-        if (user.username === gear.createdBy) {
+        if (user !== null && user.username === gear.createdBy) {
             await User.updateOne({ $pull: { uploadedGear: gear } })
             await Gear.deleteOne(gear)
         } else {
-            throw new Error('You must be signed in to add, edit or delete gear')
+            throw new Error()
         }
         res.redirect('/gear')
     } catch (error) {
@@ -42,7 +42,7 @@ router.put('/:gearId', upload.single('img'), async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id)
         const gear = await Gear.findById(req.params.gearId)
-        if (user.username === gear.createdBy) {
+        if (user !== null && user.username === gear.createdBy) {
             const { name, company, format, effects, description } = req.body
             const userId = await user._id
             const createdBy = await user.username
@@ -55,8 +55,9 @@ router.put('/:gearId', upload.single('img'), async (req, res) => {
                 userId,
                 createdBy
             }, { new: true })
-        } else {
-            throw new Error('You must be signed in to add, edit or delete gear')
+        }
+        if (user === null) {
+            throw new Error()
         }
         
         res.redirect(`/gear/${req.params.gearId}`)
@@ -68,9 +69,9 @@ router.put('/:gearId', upload.single('img'), async (req, res) => {
 //CREATE - POST - /gear
 router.post('/', upload.single('img'), async (req, res) => {
     try {
-        if (user) {
-        const { name, company, format, effects, description } = req.body
         const user = await User.findById(req.session.user._id)
+        if (user !== null) {
+        const { name, company, format, effects, description } = req.body
         const userId = await user._id
         const createdBy = await user.username
         const result = await cloudinary.uploader.upload(req.file.path, (err, result) => {
@@ -95,7 +96,7 @@ router.post('/', upload.single('img'), async (req, res) => {
         await user.save()
         res.redirect(`/gear/${newGear._id}`)
         } else {
-            throw new Error('You must be signed in to add, edit or delete gear')
+            throw new Error()
         }
     } catch (error) {
         res.render('err.ejs', { errMessage: error.message }) 
@@ -107,13 +108,14 @@ router.get('/:gearId/edit', async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id) //{ $pull: { uploadedGear: req.params.gearId } })
         const gear = await Gear.findById(req.params.gearId)
-        if (user === gear.createdBy) {
+        if (user !== null && user.username === gear.createdBy) {
             res.render('gear/edit.ejs', { gear })
-        } else {
-            throw new Error('You must be signed in to add, edit or delete gear')
+        } 
+        if (user === null) {
+            throw new Error()
         }
-    } catch (error) {
-        res.render('err.ejs', { errMessage: error.message }) 
+    } catch (Error) {
+        res.render('err.ejs', { errMessage: Error.message }) 
     }
 })
 

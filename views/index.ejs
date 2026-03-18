@@ -1,8 +1,8 @@
 <%- include('partials/_navbar.ejs', { title: 'No Guitars No Masters' }) %>
 <body>
     <%- include('partials/_pageHeader.ejs', { subheader: 'Use Your Gear Wrong, Today!' }) %>
-    <div class="indexImg">
-        <img src="https://res.cloudinary.com/dmjtm9ms7/image/upload/v1773779374/IMG_0080_uphxqs.png" alt="Enthusiastic experimentalist annoying someone within earshot" />
+    <div>
+        <img src="https://res.cloudinary.com/dmjtm9ms7/image/upload/v1773779374/IMG_0080_uphxqs.png" alt="Enthusiastic experimentalist annoying someone within earshot" class="indexImg"/>
     </div>
     <% if(user) { %>
         <div class="indexBlurbLoggedIn">
@@ -23,6 +23,5 @@
             <a href="/gear/"><button>Gear Index</button></a>
         </div>
     <% } %>
-    
 </body>
 </html>

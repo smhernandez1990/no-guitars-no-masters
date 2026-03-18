@@ -5,6 +5,7 @@
         <h3>No Gear Currently Uploaded</h3>
     <% } else { %>
         <ul class="gearIndexH3">
+            <h3 id="gearIndexH3">All Gear</h3>
             <% gear.forEach(({_id, name}) => { %>
                 <a href="/gear/<%= _id %>">
                     <li><%= `${name}` %></li>
