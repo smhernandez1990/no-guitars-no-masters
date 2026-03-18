@@ -4,8 +4,6 @@ const User = require("../models/user");
 const Gear = require('../models/gear')
 const isSignedIn = require("../middleware/isSignedIn");
 
-// My Profile Route
-// GET  /users/me
 router.get('/me', isSignedIn, async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id);

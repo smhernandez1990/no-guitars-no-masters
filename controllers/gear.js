@@ -5,7 +5,6 @@ const User = require('../models/user')
 const cloudinary = require('../utils/cloudinary')
 const upload = require('../middleware/multer')
 
-//INDEX - GET - /gear/index.ejs
 router.get('/', async (req, res) => {
     try {
        const gear = await Gear.find()
@@ -15,15 +14,13 @@ router.get('/', async (req, res) => {
     }
 })
 
-//NEW - GET - users/:userId/gear/new
 router.get('/new', (req, res) => {
     res.render('gear/new.ejs')
 })
 
-//DELETE - DELETE - /gear/:gearId
 router.delete('/:gearId', async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id) //{ $pull: { uploadedGear: req.params.gearId } })
+        const user = await User.findById(req.session.user._id)
         const gear = await Gear.findById(req.params.gearId)
         if (user !== null && user.username === gear.createdBy) {
             await User.updateOne({ $pull: { uploadedGear: gear } })
@@ -37,7 +34,6 @@ router.delete('/:gearId', async (req, res) => {
     }
 })
 
-//UPDATE - PUT - /gear/:gearId
 router.put('/:gearId', upload.single('img'), async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id)
@@ -66,7 +62,6 @@ router.put('/:gearId', upload.single('img'), async (req, res) => {
     }
 })
 
-//CREATE - POST - /gear
 router.post('/', upload.single('img'), async (req, res) => {
     try {
         const user = await User.findById(req.session.user._id)
@@ -103,10 +98,10 @@ router.post('/', upload.single('img'), async (req, res) => {
     }
 })
 
-//EDIT - GET - /gear/:gearId
+
 router.get('/:gearId/edit', async (req, res) => {
     try {
-        const user = await User.findById(req.session.user._id) //{ $pull: { uploadedGear: req.params.gearId } })
+        const user = await User.findById(req.session.user._id) 
         const gear = await Gear.findById(req.params.gearId)
         if (user !== null && user.username === gear.createdBy) {
             res.render('gear/edit.ejs', { gear })
@@ -119,7 +114,7 @@ router.get('/:gearId/edit', async (req, res) => {
     }
 })
 
-//SHOW - GET - /gear/:gearId
+
 router.get('/:gearId', async (req, res) => {
     try {
        const gear = await Gear.findById(req.params.gearId)
